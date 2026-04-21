@@ -1,5 +1,7 @@
 import ProfileCard from "./components/ProfileCard";
 import Card from "./components/Card"
+import State from "./components/State";
+import Data from "./components/Data";
 function FashionHub() {
   // const name = "Aliyat"
   // const age = 10
@@ -12,15 +14,18 @@ function FashionHub() {
     {/* <ProfileCard name="Sola Makinde" role="software Eng." number="23" />
     <ProfileCard name="Halimat Adekunle" role="Doctor" number="55"/> */}
     <ProfileCard/>
-
+{/* 
       <Card>
            <ProfileCard/>
-      </Card>
+      </Card> */}
 
-        <Card>
+        {/* <Card>
           <h1>Title: How to make money</h1>
           <p>Author: Alfa</p>
-      </Card>
+      </Card> */}
+
+      {/* <State/> */}
+      <Data/>
     </div>
   )
 }
