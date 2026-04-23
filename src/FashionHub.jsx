@@ -3,6 +3,7 @@ import Card from "./components/Card"
 import State from "./components/State";
 import Data from "./components/Data";
 import Effect from "./components/Effect";
+import Api from "./components/Api";
 function FashionHub() {
   // const name = "Aliyat"
   // const age = 10
@@ -28,8 +29,9 @@ function FashionHub() {
       {/* <State/> */}
       {/* <Data/> */}
 
-      <Effect/>
+      {/* <Effect/> */}
       
+      <Api/>
     </div>
   )
 }

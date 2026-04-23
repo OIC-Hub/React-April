@@ -1,7 +1,7 @@
-function listData({name, email}){
+function listData({name,username, email}){
     return(
         <>
-        <span>{name}</span> <span>{" "}</span> <span>{email}</span>
+        <span>{name}</span> <span>{" "}</span> <span>{username}</span> <span>{" "}</span> <span>{email}</span>
         </>
     )
 }
