@@ -1,5 +1,7 @@
 import { useState } from "react";
 import ListData from "./ListData";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function Data() {
     const [users, setusers] = useState([]);
@@ -29,6 +31,7 @@ function Data() {
 
     return (
         <div>
+            <Navbar/>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -62,6 +65,8 @@ function Data() {
 
                 ))}
             </div>
+
+            <Footer/>
         </div>
     )
 }
