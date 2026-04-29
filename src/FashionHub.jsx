@@ -7,6 +7,7 @@ import Api from "./components/Api";
 import { Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import Notfound from "./components/Notfound";
+import Dynamic from "./pages/Dynamic";
 
 function FashionHub() {
   // const name = "Aliyat"
@@ -40,6 +41,7 @@ function FashionHub() {
         <Route path="/profile" element={<ProfileCard/>}/>
         <Route path="/" element={<Data/>}/>
         <Route path="/about" element={<About/>}/>
+        <Route path="/user/:id" element={<Dynamic/>}/>
         <Route path="*" element={<Notfound/>}/>
       </Routes>
     </div>
