@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ListData from "./ListData";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 function Data() {
     const [users, setusers] = useState([]);
@@ -9,21 +10,32 @@ function Data() {
         name: "",
         email: ""
     })
+    const [error, setError] = useState()
+
+    const navigate = useNavigate();
 
     function HandleOnchange(e) {
-       const {name, value} = e.target;
-        setFormData((prev) => ({...prev, [name]: value }));
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
     }
 
-  
+    //   useEffect(() => {
+
+    //   })
+
 
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        setusers((data) => ([...data, formData]))
+        if (formData.name === "" || formData.email === "") {
+            setError("Pls fill in all fields")
+            return;
+        }
 
+        setusers((data) => ([...data, formData]))
         setFormData({ name: "", email: "" })
+        setError('')
 
     }
 
@@ -31,7 +43,7 @@ function Data() {
 
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -40,7 +52,7 @@ function Data() {
                     value={formData.name}
                     placeholder="Enter Name"
                 />
-
+                <p>{error}</p>
                 <input
                     type="email"
                     name="email"
@@ -48,6 +60,8 @@ function Data() {
                     value={formData.email}
                     placeholder="Enter Email"
                 />
+                <p>{error}</p>
+
 
                 <input type="submit" />
 
@@ -55,18 +69,18 @@ function Data() {
 
             <div>
                 {users.map((user, index) => (
-                  <div   key={index}>
-                    <span>{index + 1}. </span>
+                    <div key={index}>
+                        <span>{index + 1}. </span>
                         {/* <span>{user.name}</span>
                         <span>{" "}</span>
                         <span>{user.email}</span> */}
-                        <ListData name={user.name} email={user.email}/>
-                  </div>
+                        <ListData name={user.name} email={user.email} />
+                    </div>
 
                 ))}
             </div>
-
-            <Footer/>
+            <button onClick={() => navigate(-1)}>go to back</button>
+            <Footer />
         </div>
     )
 }
