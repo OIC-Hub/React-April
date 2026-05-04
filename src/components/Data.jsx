@@ -42,7 +42,7 @@ function Data() {
     // console.log(user)
 
     return (
-        <div>
+        <div className="bg-red-200 w-[100%]">
             <Navbar />
             <form onSubmit={handleSubmit}>
                 <input
