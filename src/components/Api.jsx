@@ -5,7 +5,7 @@ function Api(){
 
     const[user, setUser] = useState([]);
     const[loading, setLoading] = useState(true)
-    const url = 'https://jsonplaceholder.typicode.com/users'
+    const url = process.env.API_URL
 
     useEffect(() => {
         fetch(url)
