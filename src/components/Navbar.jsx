@@ -1,21 +1,26 @@
+import { Link } from "react-router-dom"
 import { NavLink } from "react-router-dom"
-
 
 const Navbar = () => {
     return (
         <div>
-            {/* <p><Link to='/'>Home</Link></p>
+           
 
-            <p> <Link to='/about'>About</Link></p>
-            <Link href='/contact'>Contact</Link> */}
+            <Link to='/about'>About</Link>
 
-            <NavLink to= "/about" style={({isActive}) => ({
+            <NavLink to="/" style={({isActive}) => ({
+                color: isActive ?  "orange" : "black",
+                textDecoration: isActive? "underline" : "none"
+            })}>Home</NavLink>
+           
+
+            {/* <NavLink to= "/about" style={({isActive}) => ({
                 color: isActive ? '#f80606' : "#02ed25",
                 fontWeight: isActive ? "bold" : "lighter",
                 textDecoration: isActive ? "underline" : "none"
             })}>
                     About
-            </NavLink>
+            </NavLink> */}
 
         </div>
     )

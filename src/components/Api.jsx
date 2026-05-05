@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
 import ListData from "./ListData";
 import Loader from "./Loader";
+import { Link } from "react-router-dom";
 function Api(){
 
     const[user, setUser] = useState([]);
@@ -23,12 +24,14 @@ function Api(){
     return(
         <>
         {user.map((list, index) => (
+           <Link to={`/user/${list.id}`}>
             <div key={index}>
                 {/* <p>{list.name}</p>
                 <p>{list.username}</p>
                 <p>{list.email}</p> */}
                 <ListData name={list.name} email={list.email} username={list.username} />
             </div>
+           </Link>
         ))}
         </>
     )
