@@ -6,11 +6,14 @@ import { useNavigate } from "react-router-dom";
 
 function Data() {
     const [users, setusers] = useState([]);
+
     const [formData, setFormData] = useState({
         name: "",
         email: ""
     })
     const [error, setError] = useState()
+
+    const [allUser, setAllUser] = useState([])
 
     const navigate = useNavigate();
 
@@ -33,13 +36,42 @@ function Data() {
             return;
         }
 
-        setusers((data) => ([...data, formData]))
+        setusers((data) => {
+            const UserList = [...data, formData];
+            localStorage.setItem("UserList", JSON.stringify(UserList));
+            return UserList;
+        })
+
         setFormData({ name: "", email: "" })
+        // localStorage.setItem( JSON.stringify(setusers));
         setError('')
 
     }
 
-    // console.log(user)
+    
+        // const deleteUser = (i) => {
+        //     localStorage.removeItem("UserList", [i])
+        //     // setusers([]); 
+        // }
+   
+
+    const getUser = JSON.parse(localStorage.getItem("UserList")) || []
+
+
+
+    const deleteUser = (index) => {
+   
+        setusers((prevUsers) => {
+        const updatedUsers = prevUsers.filter((_, i) => i !== index);
+        
+        localStorage.setItem("UserList", JSON.stringify(updatedUsers));
+        
+        return updatedUsers;
+    });
+    };
+
+
+
 
     return (
         <div className="bg-red-200 w-[100%]">
@@ -68,13 +100,12 @@ function Data() {
             </form>
 
             <div>
-                {users.map((user, index) => (
+                {getUser.map((user, index) => (
                     <div key={index}>
                         <span>{index + 1}. </span>
-                        {/* <span>{user.name}</span>
-                        <span>{" "}</span>
-                        <span>{user.email}</span> */}
+                       
                         <ListData name={user.name} email={user.email} />
+                        <button onClick={() => deleteUser(index) }> delete</button>
                     </div>
 
                 ))}
